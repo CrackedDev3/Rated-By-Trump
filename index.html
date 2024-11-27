@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate Me Coin</title>
+    <script>
+        function redirectToTwitter() {
+            // Define Trump-style phrases for each rating
+            const ratings = {
+                0: [
+                    "You’re fired! That’s what we do with losers, folks. Big mistake. 😡",
+                    "This is sad. Absolutely sad. Worst rating. Terrible. 😬",
+                    "Zero. Nothing. Zilch. A complete disaster. 😱",
+                    "This is a total failure. Big time. No one’s ever seen worse. 💔",
+                    "A 0? It’s just... pathetic. Can’t even. 😤",
+                    "You're done. Fired. No one can come back from this. 🔥",
+                    "The worst rating. A total embarrassment. 😞",
+                    "Nobody gets a zero unless they’re totally failing. 😅",
+                    "Fired. No room for losers. 🚫",
+                    "Nobody's ever seen a 0 this bad. Believe me. 🫣"
+                ],
+                1: [
+                    "You're fired! Total disaster. Not even close! 😠",
+                    "Not great, not great at all. But it’s a 1, not a 0. 😤",
+                    "This is a complete and total mess. One of the worst! 😱",
+                    "I’ve seen better. I’ve seen a lot better. You’re fired! 💼",
+                    "Let’s be honest... this is embarrassing. Just a 1. 😕",
+                    "A 1? Total failure. But don’t worry, you're still my second favorite loser. 😜",
+                    "Terrible score, but I’m being kind. A 1, folks. Just one! 😡",
+                    "This isn’t good. Not good at all. But it’s a 1. 🤷",
+                    "You get a 1, but you're still going to be fired. Trust me. 🔥",
+                    "So bad, so sad. One. The worst. But we’ll survive. 🙄"
+                ],
+                2: [
+                    "Look, not great. But you’re still better than 1. Barely. 😏",
+                    "2 is better than 1. That’s the truth. But still... not great. 🤔",
+                    "You’re going to need to do a lot better, but it’s a 2. Not horrible. 😅",
+                    "It’s a 2. Better than 1. But we expect more, much more. 💪",
+                    "Let’s be honest... it’s just average. A 2. Just barely above disaster. 😒",
+                    "Not fantastic. But at least you’re not at a 1. So there's that. 😎",
+                    "2? I’ll take it. But you’ve gotta do better, believe me. 🙄",
+                    "I’ve seen better. This is a 2, and that’s just the way it is. 😤",
+                    "It’s a start, but we need a lot more. A lot more. 😐",
+                    "Two. Could be worse, but it’s not great, folks. Not great. 😟"
+                ],
+                3: [
+                    "You’re getting closer, but it's still not fantastic. 3 out of 10. Disappointing. 😞",
+                    "You know, it's not good. Not good at all. But it’s a 3. Progress? Not really. 😅",
+                    "Could be worse, but it’s still not what we want. A 3. Terrible. 😡",
+                    "You got a 3. Okay, sure. But let’s face it, not enough. 👎",
+                    "3. It’s better than 2. But just barely. You need to try harder. 🤨",
+                    "So-so. But no one’s happy with a 3. We can do better. 🧐",
+                    "A 3? Really? Just okay, but not great. Step it up, pal. 💼",
+                    "Getting a 3 is like getting a participation trophy. You can do better. 🎯",
+                    "3 out of 10? You've got room to improve. A lot. 💪",
+                    "It’s just not good enough, folks. 3’s not gonna cut it. 😤"
+                ],
+                4: [
+                    "Four is fine, but let’s be honest, it’s not even close to perfect. 😅",
+                    "I’m giving you a 4, but it’s barely above average. Just... barely. 🙄",
+                    "You’re still below average, but you’re better than a 3. I guess. 😐",
+                    "It’s a 4. Could be better, but at least you’re trying. Not bad. 👏",
+                    "Look, I’m being generous here, it’s a 4. Could be worse. 😎",
+                    "4 is solid. But we want more, much more. Keep pushing. 💥",
+                    "You’ve made some progress, but you’re still far from great. 🤨",
+                    "It’s an okay score. I guess. Not terrible, but not amazing either. 😕",
+                    "You’re making strides. A 4 is still a long way from perfect. 💪",
+                    "4 out of 10? You’ll do better, I believe. 👍"
+                ],
+                5: [
+                    "A 5. Okay, fine. But it’s not enough. Not nearly enough. 🤷‍♂️",
+                    "5? I’ve seen better. Still, not terrible. But not great either. 😏",
+                    "You’re halfway there. But that’s still not saying much. 😐",
+                    "It’s a 5. Average. But we want excellence. We need to do better. 💥",
+                    "You’re in the middle. Not bad, but we aim higher. That’s what we do. 😎",
+                    "Not too good, not too bad. You’re right in the middle. 😏",
+                    "It’s a start, I guess. But we want more. Much more. 💪",
+                    "Five out of ten. That’s all you got? Come on! You’re better than this! 😤",
+                    "We’ll take a 5. But we’re aiming for the top, folks. 🏆",
+                    "A 5. It’s fine, I guess. But let’s shoot for greatness next time. 🎯"
+                ],
+                6: [
+                    "Not bad, not bad. You’re getting there. A 6. 😏",
+                    "6 is solid. But we need better. Always better. 💥",
+                    "You’re halfway to greatness. Keep going, you’re doing fine. 😎",
+                    "6? Alright, alright. Not bad, but it’s not a 10, that’s for sure. 🏅",
+                    "You’re above average. Just barely. But you can do more. 💪",
+                    "6 out of 10? That’s fine, but we need perfection, folks. 🏆",
+                    "Keep pushing. A 6 is good, but we want greatness! 💥",
+                    "A solid 6. Just a little more effort and you’ll be on top. 🌟",
+                    "Better than a 5, but not quite a 7. Keep it up. 🔥",
+                    "It’s a good score. But you can definitely do better. 🧐"
+                ],
+                7: [
+                    "7? Now we’re talking. You’re almost there, folks. 😎",
+                    "A 7 is good, but you’ve still got a lot to go. Don’t stop now! 💪",
+                    "Not bad, but not perfect either. Still, a 7. We’ll take it. 🏅",
+                    "You’re in the top zone now. A solid 7! Keep going, don’t stop! 🚀",
+                    "7’s a lucky number, but luck only gets you so far. Keep it up! 🍀",
+                    "It’s a 7. Not perfect, but you're close. Almost there! 🎯",
+                    "7? Nice, but you need to close the deal. 💼",
+                    "You’re doing great, but there’s room to improve. We’ll take a 7. 🎉",
+                    "A 7 is a great start. You’re on your way. Keep the momentum! 🌟",
+                    "You’re on the right track, just a little more and you’re golden! 💥"
+                ],
+                8: [
+                    "8? That’s what I’m talking about. Great job. Keep it up! 🎉",
+                    "An 8. Okay, we’re getting there. Still room for improvement! 😏",
+                    "You’re almost there. Just need a little more to hit perfection. 💪",
+                    "Impressive, but you’re still not a 10. Keep working! 😎",
+                    "You’re doing great, folks. An 8 is fantastic. But we need more! 🚀",
+                    "8 out of 10? Pretty solid, but we’re going for 10, always! 💥",
+                    "An 8. That's good, but don’t stop now. You’re so close. 🏅",
+                    "You’re at the top of your game. Keep pushing, an 8 is great! 🎯",
+                    "You’ve hit 8, and that’s impressive. Let’s go for the perfect 10! 😎",
+                    "Almost perfect. An 8 is a huge win, but don’t settle. 🌟"
+                ],
+                9: [
+                    "9 out of 10? Absolutely incredible. You're close, very close! 🎯",
+                    "Perfection is within reach. A 9 is huge, but we're going for 10! 💥",
+                    "You’re nearly there! Just a 9. But that’s still amazing. 😎",
+                    "A 9 is awesome. You’re so close to the top! 🏆",
+                    "Not perfect, but you're damn close. A 9 is impressive. 👏",
+                    "This is a huge score, but perfection is still a little bit away. 🎯",
+                    "9 out of 10! Just one more step to greatness. 🌟",
+                    "That’s a fantastic score. A 9 is great, but a 10 is even better. 💯",
+                    "You’re at 9. You can feel the greatness, but don’t stop now! 🚀",
+                    "Close to perfect. Very, very close. Keep going, you’ve got this. 💪"
+                ],
+                10: [
+                    "A 10! Incredible. You’re amazing, nobody does it better. 👏",
+                    "Perfect score! You nailed it. Total winner. 🏆",
+                    "You did it, folks! A perfect 10! Now that’s what I call success. 💥",
+                    "10 out of 10. That’s what greatness looks like. 🎯",
+                    "You’re a 10. Believe me, you are. The best, the greatest. 🌟",
+                    "A perfect 10. I love it! You're on top of the world now. 🌍",
+                    "Nobody does it better. A perfect 10, folks. Nobody. 👑",
+                    "You're perfect. You’ve reached the top. A 10! 🎉",
+                    "Perfect score, perfect performance. You’re the best, don’t forget it. 🏅",
+                    "A 10. The highest score. You’re a legend. 💥"
+                ],
+                11: [
+                    "You’re the GOAT! The greatest of all time, nobody’s even close. 🐐🔥",
+                    "This is it. 11 out of 10. Unbeatable, folks. No one’s ever seen anything like it. 👑",
+                    "11? You’ve broken the scale. Absolute legend. 🌟",
+                    "Perfection doesn't even begin to describe you. An 11 is what you deserve. 😎",
+                    "You’re a hero. Absolute perfection. 11 out of 10. Total winner. 🏆",
+                    "This is how it’s done. Nobody’s better. 11/10, unbelievable! 🙌",
+                    "The ultimate score. The ultimate winner. 11/10, nobody’s better. 🔥",
+                    "You’ve achieved greatness, 11/10. A living legend. 🌟",
+                    "You’ve gone above and beyond. 11/10 is the mark of the greatest. 👑",
+                    "Unstoppable. A perfect 11. Absolute greatness. 😍"
+                ]
+            };
+
+            // Weighted probabilities for generating a random number
+            const probabilities = [
+                0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5,
+                6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11
+            ];
+
+            // Generate a random number based on the probabilities
+            const randomNumber = probabilities[Math.floor(Math.random() * probabilities.length)];
+
+            // Get a random funny line for the selected number
+            const funnyLines = ratings[randomNumber];
+            const funnyLine = funnyLines[Math.floor(Math.random() * funnyLines.length)];
+
+            // Create the tweet content
+            const tweetText = `${funnyLine} ${randomNumber}\n$RatedByTrump`;
+
+            // URL encode the tweet text and redirect to Twitter's share URL
+            const twitterURL = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
+            window.location.href = twitterURL;
+        }
+    </script>
+</head>
+<body>
+    <button onclick="redirectToTwitter()">Rate Me! 🚀</button>
+</body>
+</html>
