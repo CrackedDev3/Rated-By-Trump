@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate Me Coin</title>
+    <script>
+        // Function to redirect to Twitter with the generated response
+        window.onload = function() {
+            // Define Trump-style phrases with skewed probabilities for each rating
+            const ratings = {
+                0: [
+                    "You're fired! This is the worst thing I’ve ever seen. Seriously, it's a total disaster. The worst score in history. Believe me.",
+                    "A zero? This is pathetic. Complete failure. I’ve seen better from a dog—no offense to the dogs.",
+                    "Zero? That’s what you get when you have absolutely no chance. Like Hillary running for president—total failure.",
+                    "I mean, how bad can it get? Zero out of ten, folks. You’re out of here. Total disaster.",
+                    "This is worse than anything I’ve ever seen. Honestly, I think a rock would have a better score. Pathetic.",
+                    "Zero? You’re just wasting my time. I’ve seen better from my worst enemies. Complete embarrassment.",
+                    "Folks, it’s a zero. This is like watching the Democrats try to win with Joe Biden. Just hopeless.",
+                    "Zero. Complete failure. You know, I’m always right. I called it. And it’s a disaster.",
+                    "You’ve reached the bottom. Total disaster. A zero. Not even the worst of the worst could do worse.",
+                    "Sad, folks. You get a zero. This is a joke, like the 2016 election for Hillary. Just embarrassing."
+                ],
+                1: [
+                    "One? One is for losers. This is a joke, folks. A disaster. It’s bad, real bad.",
+                    "A one? Believe me, this is not good. This is the kind of score you get when you can’t even try. It’s embarrassing.",
+                    "You’ve got a one. Honestly, it’s almost as bad as Biden's presidency. And we all know how *that* turned out.",
+                    "One? That’s the worst score anyone could get without completely quitting. You should be ashamed.",
+                    "A one? Nobody gets a one unless they’re a total failure. And that’s what this is.",
+                    "Folks, this is a disaster. A one is about as low as you can go. This is worse than when Hillary lost.",
+                    "One out of ten? That’s pathetic. You can’t win with that. You need to get real, folks.",
+                    "A one? Terrible. I know a lot of people, great people, and none of them would ever score a one.",
+                    "One’s a joke. It’s weak. You should be embarrassed. Like the Democrats thinking they could take down Trump."
+                ],
+                2: [
+                    "Two? Still terrible. A two is just slightly better than the disaster of a one. Weak.",
+                    "Two out of ten? Look, you’re better than a one, but barely. Not even close to what you need.",
+                    "Two is barely better than a zero. You’ve got potential, but this is embarrassing.",
+                    "Two? That’s a start, I guess. But let’s face it, that’s weak. Like when Obama tried to ‘fix’ the economy.",
+                    "Two out of ten? Pathetic. You can’t win with that. You need to get real, folks.",
+                    "A two? You know what that means? It means you’re getting somewhere, but not enough. Total failure.",
+                    "Two? This is like Biden’s approval ratings—barely enough to stay relevant, but still a joke.",
+                    "Two? I mean, it’s a tiny improvement, but that’s like trying to build a skyscraper on a foundation made of sand.",
+                    "It’s a two. Just enough to avoid total failure. But we’re still talking about a total disaster here.",
+                    "Two’s not enough. It’s weak. A two out of ten is like saying you’re ‘almost’ winning while you’re losing badly."
+                ],
+                3: [
+                    "Three? Almost better, but still weak. This is like trying to run a campaign with no message. It’s just sad.",
+                    "Three? You’re getting somewhere, but this is still bad. Just like the Democrats after 2016—they couldn’t handle the truth.",
+                    "Three out of ten? It’s better than a two, but honestly, it’s still pathetic. You need to do better, folks.",
+                    "Three is weak. We’re not here for ‘okay.’ We want the best. And this isn’t it.",
+                    "Three? Alright, but that’s like saying you’re doing well while everyone else is passing you by. You’re barely hanging on.",
+                    "Three’s a start, but it’s nothing impressive. I’ve seen better results from a failing candidate.",
+                    "Three out of ten? Still not good enough. You’ve got potential, but you need a big push.",
+                    "This is a three. Almost there, but not even close to where you need to be. Like Bernie trying to be president. Pathetic.",
+                    "Three’s a weak score. I wouldn’t even want to be associated with that. Trust me, folks, it’s a disaster.",
+                    "Three? You’re trying, but it’s just not enough. Not even close to where you need to be. Weak."
+                ],
+                4: [
+                    "Four? Alright, now we’re talking. But not really. It’s still weak. Like the Washington Post trying to cover me—just weak.",
+                    "Four’s not bad, but we’re not here for ‘fine.’ We need greatness.",
+                    "Four? Fine. But we can do better than that. It’s like saying Hillary did a good job in the election. Total disaster.",
+                    "Four out of ten? Fine, but not good enough. That’s like saying you’re ‘almost’ winning while you’re losing badly.",
+                    "Four’s okay, but I don’t need okay. I need *greatness*, and this is not it.",
+                    "Four? Barely acceptable. But we’re aiming for perfection here, folks. Let’s get serious.",
+                    "Four? This is like Biden trying to pass a bill—nothing gets done.",
+                    "You’re getting closer, but a four is still a long way from what we need. Like the Dems after 2020—total failure.",
+                    "Four is just okay. We need greatness, folks. This is weak.",
+                    "Four out of ten? You’ve got a long way to go. But you can still do it—if you try harder."
+                ],
+                5: [
+                    "Five? It’s okay, but we’re not here for ‘okay,’ folks. We want winners.",
+                    "Five is fine, but we need more. We’re aiming for greatness, folks.",
+                    "Five out of ten? You’re trying, but we need *more.* This isn’t great.",
+                    "Five? Okay, but let’s be honest—nobody’s talking about the guy who gets a five.",
+                    "Five’s decent, but you’re not going to be remembered for this. We’re going for *greatness*.",
+                    "Five? Fine, but it’s not the perfect score. We need more.",
+                    "Five’s alright. But five is just weak, folks. You can do much better.",
+                    "Five out of ten? That’s okay, but let’s not get comfortable. You’ve got potential, but not much more.",
+                    "Five? Nice, but it’s still not a *winning* score. We want the best, folks.",
+                    "Five? Fine, but we’re not here to be ‘fine.’ Get to the top."
+                ],
+                6: [
+                    "Six? Alright, I’ll take it, but let’s be real—this is still weak.",
+                    "Six is decent, but we need more. We’re aiming for greatness, folks.",
+                    "Six? Fine, but don’t get comfortable. Six is *not* going to win you anything.",
+                    "Six out of ten? Okay, but we need a lot more. This isn’t a win.",
+                    "Six? It’s okay, but folks, we want perfection here. We’re not here for average.",
+                    "Six? Fine, but it’s not the perfect score. We need more.",
+                    "Six is decent, but you’ve got a long way to go. You can do it, but it’s not there yet.",
+                    "Six? Okay, but six is like saying you’re in the middle. We’re not aiming for the middle.",
+                    "Six out of ten? Good, but not *good enough* for me.",
+                    "Six is alright, but we want greatness, folks. Get to work."
+                ],
+                7: [
+                    "Seven? Now we’re talking, but still not quite enough. We’re aiming for a perfect ten.",
+                    "Seven’s good, but we need more. This is like saying Hillary could have won—weak.",
+                    "Seven out of ten? Fine, but not a victory. Step it up, folks.",
+                    "Seven? Alright, but not impressive. You’ve got potential, but this isn’t *great*.",
+                    "Seven is decent, but I’m aiming for *greatness*, folks. Get with the program.",
+                    "Seven’s fine, but it’s not the goal. We’re looking for a ten.",
+                    "Seven? Fine, but we want ten. Anything less is weak.",
+                    "Seven out of ten? Good, but you’re not winning yet. Get to work, folks.",
+                    "Seven? Fine, but not the best. Let’s aim higher. Perfection is the goal.",
+                    "Seven’s decent, but don’t settle for decent. We’re looking for greatness."
+                ],
+                8: [
+                    "Eight? Now we’re getting somewhere. But it’s not enough. We need a perfect score.",
+                    "Eight’s decent, but we’re aiming higher. We want *perfection*, folks.",
+                    "Eight? Fine, but we want ten. Anything less is weak.",
+                    "Eight out of ten? Almost, but still not the best. Keep going.",
+                    "Eight? Great, but still not the best. Perfection is the goal, folks.",
+                    "Eight’s fine, but let’s be real—we’re aiming for ten here.",
+                    "Eight? Good, but we’re not stopping here. We need the top.",
+                    "Eight’s decent, but we need *better* than decent. We need great.",
+                    "Eight’s fine, but we’re looking for greatness, folks.",
+                    "Eight? Great, but not perfect. Let’s do better."
+                ],
+                9: [
+                    "Nine? Almost there. You’re getting close, but still not perfect.",
+                    "Nine out of ten? We’re almost at the top, but not quite there yet.",
+                    "Nine’s great, but remember, folks, I go for the best. A ten.",
+                    "Nine? Good, but we need ten to win it all. You’re close.",
+                    "Nine out of ten? We’re getting closer, but perfection is the goal.",
+                    "Nine? You’re almost there, but *almost* isn’t good enough for me.",
+                    "Nine? Almost perfect, but I want a perfect ten.",
+                    "Nine’s good, but ten is better. Get to work.",
+                    "Nine? So close. But I only accept perfection, folks.",
+                    "Nine? Good, but we need to *finish strong*."
+                ],
+                10: [
+                    "Ten? Absolutely perfect. You’re the best, folks. No one does it like you.",
+                    "Ten out of ten? Incredible. You’re a winner, folks. Unbelievable.",
+                    "Ten? That’s the score we’re looking for. Perfect, folks. You’re the best.",
+                    "Ten? Absolutely fantastic. You’re a winner, no doubt about it.",
+                    "Ten? This is the best. Believe me, folks, this is perfection.",
+                    "Ten out of ten? You’ve made it. Absolute perfection.",
+                    "Ten? You’re the greatest, folks. Believe me. Nobody beats you.",
+                    "Ten? Perfect score. You’re the best. I’m proud of you.",
+                    "Ten out of ten? Perfection. Folks, you’ve nailed it.",
+                    "Ten? Simply perfect. The best. Believe me."
+                ],
+                11: [
+                    "Eleven? You’re the GOAT. Best of the best. Nobody’s better, believe me.",
+                    "Eleven? Unbelievable! You’re the greatest. I’ve never seen anything like it. Totally amazing.",
+                    "Eleven out of ten? Folks, this is incredible. You’re the best, and everyone knows it.",
+                    "Eleven? The best. Absolutely the best. Nobody does it like you. You’re a winner.",
+                    "Eleven? Perfection plus. Simply the best. Nobody can top you.",
+                    "Eleven? You’re not just great. You’re legendary. This is next level, folks.",
+                    "Eleven? Wow, you’re the GOAT. Top of the heap. Nobody even comes close.",
+                    "Eleven? Best score I’ve ever seen. You’re a winner, folks.",
+                    "Eleven? Folks, I don’t know what to say. This is *legendary* stuff.",
+                    "Eleven out of ten? Incredible. You’re the best of all time. No doubt about it."
+                ]
+            };
+
+            // Randomize a rating based on the skewed probabilities
+            const rand = Math.random();
+            let rating;
+
+            if (rand <= 0.7) {
+                rating = Math.floor(Math.random() * 4); // 0-4 range (70%)
+            } else if (rand <= 0.9) {
+                rating = Math.floor(Math.random() * 4) + 5; // 5-8 range (20%)
+            } else {
+                rating = Math.floor(Math.random() * 3) + 9; // 9-11 range (10%)
+            }
+
+            const response = ratings[rating][Math.floor(Math.random() * ratings[rating].length)];
+
+            // Directly redirect to Twitter with the Trump comment
+            window.location.href = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(response + " $RatedByTrump");
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>
