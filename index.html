@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate Me Coin</title>
+    <script>
+        // Function to redirect to Twitter with the generated response
+        window.onload = function() {
+            // Define Trump-style phrases with skewed probabilities for each rating and assign people to each rating
+            const ratings = {
+                0: {
+                    name: "Kamala",
+                    phrases: [
+                        "You’re just like Kamala—absolute worst. Can’t even win the people’s trust. Total disaster.",
+                        "Like Kamala, you’re clueless. Not even close to being a winner.",
+                        "You remind me of Kamala—people just can’t stand you. Sad!",
+                        "You’re the Kamala of the group, folks. A complete embarrassment.",
+                        "Like Kamala, you couldn’t win a race if you were the only one in it.",
+                        "Folks, you’re just like Kamala. Total failure, no credibility, just embarrassing.",
+                        "You know, Kamala couldn’t even handle the job. You? Same story. Zero chance.",
+                        "You’re just like Kamala—so out of touch. It’s unbelievable.",
+                        "A zero? You’re Kamala 2.0. Nobody can trust you.",
+                        "Like Kamala, you’re always in the wrong place at the wrong time."
+                    ]
+                },
+                1: {
+                    name: "Fauci",
+                    phrases: [
+                        "Just like Fauci, you’ve got no idea what you’re doing. Absolutely no clue.",
+                        "You’re the Fauci of the group. Wrong on everything, all the time.",
+                        "Like Fauci, you can’t even get it right. Total disaster. Nobody believes you.",
+                        "Fauci couldn’t even keep his own story straight. And you? Same situation.",
+                        "You remind me of Fauci—flip-flopping all the time. People don’t trust you.",
+                        "Like Fauci, you talk a big game, but it’s all nonsense. A total failure.",
+                        "Folks, you’re just like Fauci. You’ve got no plan and no idea.",
+                        "You’re Fauci-level wrong all the time. Can’t trust a word you say.",
+                        "Like Fauci, you’re a total failure. Just embarrassing, really.",
+                        "Fauci? You’re doing a great job of impersonating him. Totally out of your depth."
+                    ]
+                },
+                2: {
+                    name: "Hillary",
+                    phrases: [
+                        "You’re just like Hillary—always losing when it counts. SAD!",
+                        "Like Hillary, you couldn’t even win the big one. Zero chance.",
+                        "Hillary lost to me. You? Same story. Total failure.",
+                        "Just like Hillary, you’re always wrong and never learn from your mistakes.",
+                        "You remind me of Hillary—always blaming everyone but yourself.",
+                        "Hillary couldn’t even manage a campaign. And you? Same disaster.",
+                        "Like Hillary, you’ve got no idea how to get things done. A total flop.",
+                        "You’re just like Hillary—nobody wants you in charge. Pathetic.",
+                        "Hillary? You’re a walking example of everything she did wrong.",
+                        "Just like Hillary, you’re not fit for the job. People can see right through you."
+                    ]
+                },
+                3: {
+                    name: "Ansem (Notorious Crypto Scammer)",
+                    phrases: [
+                        "You’re just like Ansem—total disaster in the crypto world. Nobody trusts you.",
+                        "Ansem couldn’t make it in crypto. And you? You’re following right in his footsteps.",
+                        "You remind me of Ansem—just a scammer, folks. Not worth a penny.",
+                        "Like Ansem, you’re all talk and no action. Complete fraud.",
+                        "You’re just like Ansem, folks—losing money and respect every day.",
+                        "Ansem couldn’t even keep his own scam straight. You? Same story.",
+                        "Like Ansem, you’ll promise the moon and deliver nothing.",
+                        "You’re just like Ansem—taking people’s money and leaving them empty-handed.",
+                        "Ansem? You’re doing a great job of copying his mistakes.",
+                        "You remind me of Ansem—good at taking, terrible at giving."
+                    ]
+                },
+                4: {
+                    name: "LeBron James",
+                    phrases: [
+                        "You’re like LeBron—great at talking, but not so great at backing it up.",
+                        "Like LeBron, you think you're the best, but it’s just not happening.",
+                        "You remind me of LeBron—all talent, no winning. Get it together!",
+                        "LeBron couldn’t win the big one, and you? Same story.",
+                        "You’re just like LeBron—lots of talk, but no real action.",
+                        "Folks, you’re like LeBron. Too much drama, not enough results.",
+                        "Like LeBron, you’ve got the skill, but you’re just missing the point.",
+                        "LeBron's good, but you? Well, you’ve got a long way to go.",
+                        "You’re like LeBron—great on the court, but terrible at everything else.",
+                        "LeBron couldn’t even lead his team to a clean win. You? Same thing."
+                    ]
+                },
+                5: {
+                    name: "Thread Guy (Zoomer Crypto Podcast Host)",
+                    phrases: [
+                        "You’re just like Thread Guy—talking endlessly but saying nothing.",
+                        "Like Thread Guy, you think you’re an expert, but nobody’s buying it.",
+                        "Folks, you remind me of Thread Guy. All talk, no action.",
+                        "Thread Guy’s got nothing on you. You’re both just wasting people’s time.",
+                        "You’re just like Thread Guy—overhyping yourself and underdelivering.",
+                        "Like Thread Guy, you talk like you know everything, but you really don’t.",
+                        "Thread Guy thinks he’s changing the world. You? Same level of delusion.",
+                        "You remind me of Thread Guy—way too much talking, not enough doing.",
+                        "Like Thread Guy, you think you’re a genius. Reality check: you’re not.",
+                        "Thread Guy? You’re doing a fantastic job of being just as useless."
+                    ]
+                },
+                6: {
+                    name: "RFK Jr.",
+                    phrases: [
+                        "You remind me of RFK Jr.—you’ve got a lot of passion, just like him!",
+                        "Like RFK Jr., you’re fighting for what’s right—people love that energy!",
+                        "You’ve got the spirit of RFK Jr.—a real fighter who never backs down!",
+                        "Folks, you remind me of RFK Jr.—determined and full of conviction. Great stuff!",
+                        "Like RFK Jr., you’ve got heart. People respect that, big time!",
+                        "You remind me of RFK Jr.—a warrior who’s not afraid to speak his mind.",
+                        "Like RFK Jr., you’re not afraid to go against the grain. That’s how you win!",
+                        "You’re just like RFK Jr.—a true advocate for the people!",
+                        "Folks, you’ve got that RFK Jr. fire. People want more of that!",
+                        "Like RFK Jr., you’ve got a great message and a ton of heart. Keep it up!"
+                    ]
+                },
+                7: {
+                    name: "Joe Rogan",
+                    phrases: [
+                        "You’re like Joe Rogan—big impact, great guest list, love it!",
+                        "Like Rogan, you’re not afraid to speak your mind, and that’s what makes you great!",
+                        "You’ve got a Rogan vibe—always asking the right questions, always interesting!",
+                        "Folks, you’re like Rogan—people love what you’re doing, you’re changing the game!",
+                        "Like Rogan, you’re constantly evolving and bringing in fresh ideas. Keep going!",
+                        "You remind me of Rogan—always authentic and never backing down!",
+                        "Like Rogan, you’ve got the courage to have the real conversations. Big respect!",
+                        "You’re like Rogan—bold, brave, and loved by many!",
+                        "Folks, you’ve got that Rogan spirit—always moving forward, always improving!",
+                        "Like Rogan, you’re redefining the space. Keep doing what you’re doing!"
+                    ]
+                },
+                8: {
+                    name: "Don Jr.",
+                    phrases: [
+                        "You’re just like Don Jr.—a powerhouse of success, folks. Big things ahead!",
+                        "Like Don Jr., you’re always ahead of the game. People can’t stop talking about you!",
+                        "You remind me of Don Jr.—you’ve got the drive, the ambition, and the smarts!",
+                        "Just like Don Jr., you’ve got the whole package. Keep shining!",
+                        "You’re like Don Jr.—people want to work with you, and they respect you!",
+                        "Like Don Jr., you’ve got a big future. Nothing but success ahead!",
+                        "You’re just like Don Jr.—always in the right place at the right time.",
+                        "Folks, you’ve got that Don Jr. spark—people are taking notice!",
+                        "Like Don Jr., you’re making waves and building something big!",
+                        "You remind me of Don Jr.—always on top, always winning!"
+                    ]
+                },
+                9: {
+                    name: "Elon Musk",
+                    phrases: [
+                        "Just like Elon, you’re changing the game. It’s incredible!",
+                        "You’re like Elon—always thinking big, always pushing the envelope.",
+                        "Like Elon, you’ve got that visionary mindset. People are amazed!",
+                        "Folks, you’re like Elon—doing things nobody else even dreams of!",
+                        "You remind me of Elon—thinking outside the box and achieving the impossible.",
+                        "Like Elon, you’re on the path to greatness. People can’t wait to see what’s next!",
+                        "You’re just like Elon—always innovating, always ahead of the curve.",
+                        "Like Elon, you’re a true pioneer. Big things are on the horizon!",
+                        "You remind me of Elon—always ahead, always winning!",
+                        "Just like Elon, you’re creating the future. It’s amazing to watch!"
+                    ]
+                },
+                10: {
+                    name: "Dana White",
+                    phrases: [
+                        "You’re just like Dana White—always in control, always getting results!",
+                        "Like Dana White, you’re unstoppable. People love your energy!",
+                        "You remind me of Dana White—always pushing limits, always succeeding!",
+                        "Just like Dana White, you’re leading the charge. People can’t ignore you!",
+                        "You’re like Dana White—no one outworks you. Keep up the great work!",
+                        "Like Dana White, you’ve got the drive to get things done, and people respect that!",
+                        "You remind me of Dana White—constantly improving, constantly winning!",
+                        "You’re like Dana White—taking things to the next level. Big respect!",
+                        "Just like Dana White, you’re making waves in your own way!",
+                        "Folks, you’re like Dana White—dominant, focused, and unstoppable!"
+                    ]
+                },
+                11: {
+                    name: "Baron Trump",
+                    phrases: [
+                        "You’re just like Baron—young, sharp, and destined for greatness!",
+                        "Like Baron, you’ve got the potential to change the world. Watch out!",
+                        "You remind me of Baron—sharp, smart, and way ahead of your time!",
+                        "Folks, you’re like Baron—destined for success and already making an impact!",
+                        "Just like Baron, you’ve got the skills to go far. Keep pushing!",
+                        "Like Baron, you’ve got a bright future ahead. Keep doing amazing things!",
+                        "You remind me of Baron—everything you do is just effortless and impressive!",
+                        "You’re like Baron—on top, and it’s only going to get better from here!",
+                        "Like Baron, you’ve got that winning attitude. Nothing can stop you now!",
+                        "You’re just like Baron—young, strong, and absolutely going places!"
+                    ]
+                }
+            };
+
+            // Choose a random number from 0 to 11
+            let randomRating = Math.floor(Math.random() * 12);
+
+            // Select the random person's rating and phrase
+            let rating = ratings[randomRating];
+            let randomPhrase = rating.phrases[Math.floor(Math.random() * rating.phrases.length)];
+
+            // Construct the tweet content
+            let tweetContent = `Your Trump Rating - ${randomRating}\n\n${randomPhrase}\n\n$${rating.name}`;
+
+            // Redirect to Twitter (X) to tweet
+            window.location.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetContent)}`;
+        };
+    </script>
+</head>
+<body>
+    <h1>Rate Me Coin</h1>
+    <p>Click below to get your Trump rating!</p>
+    <button onclick="window.location.reload()">Get Rating</button>
+</body>
+</html>
